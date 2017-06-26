@@ -180,7 +180,7 @@
       "Value" : { "Fn::GetAtt" : [ "EC2Instance", "AvailabilityZone" ] }
     },
     "PublicDNS" : {
-      "Description" : "Public DNSName of the newly created EC2 instance",
+      "Description" : "chenged Public DNSName of the newly created EC2 instance",
       "Value" : { "Fn::GetAtt" : [ "EC2Instance", "PublicDnsName" ] }
     },
     "PublicIP" : {
