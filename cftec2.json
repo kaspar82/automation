@@ -155,15 +155,6 @@
                           { "Fn::FindInMap" : [ "AWSInstanceType2Arch", "t2.small" , "Arch" ] } ] }
       }
     },
-	"mytopic" : {
-	      "Type" : "AWS::SNS::Topic",
-		   "Properties" : {
-        "Subscription" : [ { "Endpoint" : "vidya.kaspar82@gmail.com",
-								"Protocol" : "email" } ]
-        }
-
-	
-	},
 
     "InstanceSecurityGroup" : {
       "Type" : "AWS::EC2::SecurityGroup",
