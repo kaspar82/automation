@@ -151,20 +151,6 @@
         "InstanceType" : "t2.small",
         "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup" } ],
          "KeyName" : { "Ref" : "KeyName" },
-        "UserData"       : { "Fn::Base64" : { "Fn::Join" : ["", [
-             "#!/bin/bash -xe\n",
-             "sudo yum update -y\n",
-			 "sudo yum install httpd -y\n",
-			  "sudo service httpd start ",
-			"\n"
-        ]]}}        
-      ,
-      "CreationPolicy" : {
-        "ResourceSignal" : {
-          "Timeout" : "PT5M"
-        }
-      }
-    },
         "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
                           { "Fn::FindInMap" : [ "AWSInstanceType2Arch", "t2.small" , "Arch" ] } ] }
       }
@@ -174,9 +160,7 @@
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
         "GroupDescription" : "Enable SSH access via port 22",
-        "SecurityGroupIngress" : [ 
-		{"IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : "0.0.0.0/0"},
-		{
+        "SecurityGroupIngress" : [ {
           "IpProtocol" : "tcp",
           "FromPort" : "22",
           "ToPort" : "22",
